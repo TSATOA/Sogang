@@ -1,0 +1,2 @@
+bool f(void) { return true; }
+void g(void) { return f(1, 2); }

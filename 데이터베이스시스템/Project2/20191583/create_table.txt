@@ -1,0 +1,17 @@
+create table Customer(Customer_ID int, Name char(18), Phone_Number char(18), Address char(18), Contract bit, primary key (Customer_ID));
+
+create table Recipient(Recipient_ID int,Name char(18), Phone_Number char(18), Address char(18), primary key (Recipient_ID));
+
+create table Shipment(Shipment_ID int, Items char(18), Order_Time datetime, Receive_Time datetime, international bit, Hazardous bit, Customer_ID int, Recipient_ID int, primary key(Shipment_ID), foreign key (Customer_ID) references Customer (Customer_ID) on delete cascade, foreign key (Recipient_ID) references Recipient (Recipient_ID) on delete cascade);
+
+create table Bill(Bill_ID int, Pay_Method char(18), Price float, Billing_Date datetime, State bit, primary key (Bill_ID));
+
+create table Ship_Bill(Shipment_ID int, Bill_ID int, primary key (Shipment_ID), foreign key (Shipment_ID) references Shipment (Shipment_ID) on delete cascade, foreign key (Bill_ID) references Bill (Bill_ID) on delete cascade);
+
+create table Bill_Cus(Bill_ID int, Customer_ID int, primary key(Bill_ID), foreign key (Bill_ID) references Bill (Bill_ID) on delete cascade, foreign key (Customer_ID) references Customer (Customer_ID) on delete cascade);
+
+create table Location(Shipment_ID int, Position_Type char(18), Name_ID char(18), Start_Time datetime, End_Time datetime, State char(18), primary key(Shipment_ID, Position_Type, Name_ID), foreign key (Shipment_ID) references Shipment (Shipment_ID) on delete cascade);
+
+create table Service(Package_Type char(18), Weight float, TimeLiness char(18), primary key (Package_Type, Weight, TimeLiness));
+
+create table Ship_Ser(Shipment_ID int, Package_Type char(18), Weight float, Timeliness char(18), primary key (Shipment_ID), foreign key (Shipment_ID) references Shipment (Shipment_ID) on delete cascade, foreign key (Package_Type, Weight, Timeliness) references Service (Package_Type, Weight, Timeliness) on delete cascade);

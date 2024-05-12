@@ -1,0 +1,35 @@
+int main(int a, bool b){
+    int i_a[10];
+    bool b_a[10];
+    bool bb_a[11];
+    bool ret_a[10];
+    int i;
+    int ret;
+    ret = -1;
+    i = 0;
+    while(i < 10){
+        i_a[i] = a + i;
+        b_a[i] = b && a < i;
+        i = i + 1;
+    }
+    b_a[0] = true;
+    i = 0;
+    while(i < 10){
+        if(b_a[i] || bb_a[i]){
+            bb_a[i + 1] = !b_a[i];
+        }else{
+            bb_a[i + 1] = b_a[i];
+        }
+        ret_a[i] = b_a[i] == bb_a[i + 1];
+        i = i + 1;
+    }
+    ret_a[9] = true;
+    i = 0;
+    while(i < 10){
+        if(ret_a[i]){
+            ret = ret + i_a[i]; 
+        }
+        i = i + 1;
+    }
+    return ret;
+}

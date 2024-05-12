@@ -1,0 +1,9 @@
+drop table Ship_Bill;
+drop table Bill_Cus;
+drop table Bill;
+drop table Location;
+drop table Ship_Ser;
+drop table Service;
+drop table Shipment;
+drop table Customer;
+drop table Recipient;

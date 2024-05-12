@@ -1,0 +1,25 @@
+int main (int a, int b){
+    int i;
+    int n;
+    bool bb;
+    bb=true;
+    while(bb || i < a){
+        if(bb){
+            i = b;
+            n = b;
+            bb = false;
+            if (b == 1){
+                i = i + 1;
+                n = n + 1;
+            }
+        }
+        i = i * n;
+    }
+    int ii;
+    if(bb && ii>=0){
+        return -1;
+    }else{
+        ii = i;
+        return ii;
+    }
+}

@@ -1,0 +1,4 @@
+bool f(void){
+  int x;
+  x = 1 + true;
+}
